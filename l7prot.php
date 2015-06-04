@@ -60,7 +60,7 @@ function l7prot(){
 		*/
 		$CID = substr(bin2hex(openssl_random_pseudo_bytes(192)), 1, 32);
 		setcookie("wf_ini",$CID.time(),time()+10);
-		file_put_contents("/tmp/_wf.id",$CID.time(),FILE_APPEND);
+		file_put_contents("/tmp/_wf.id",$_SERVER['REMOTE_ADDR']."&".$CID.time()."\n",FILE_APPEND);
 		die();
 	}
 	function rwf1(){
@@ -72,8 +72,16 @@ function l7prot(){
 	}
 	if(!empty($_GET['_wf'])){
 		// Check server ID cache (stored in /tmp/_wf.id)
-		if(in_array(htmlspecialchars_decode($_COOKIE['wf_ini']), explode("\n",file_get_contents("/tmp/_wf.id")))){
-			rwf1();
+		if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR']."&".$_COOKIE['wf_ini']), explode("\n",file_get_contents("/tmp/_wf.id")))){
+			if($_GET['_wf'] == htmlspecialchars_decode($_COOKIE['wf_ini'])){
+				rwf1();
+			}
+		}
+	}
+	if(!empty($_GET['_wf_ACK'])){
+		// Check server ID cache (stored in /tmp/_wf.id)
+		if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR']."&".$_COOKIE['wf_ini']), explode("\n",file_get_contents("/tmp/_wf.id")))){
+			
 		}
 	}
 	eod:
