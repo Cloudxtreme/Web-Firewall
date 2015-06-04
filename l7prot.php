@@ -1,5 +1,5 @@
 <?php
-/* Layer 7 DDoS protection script */
+/* Layer 7 HTTP GET DDoS protection script */
 /* Prerequisites: iptables, PHP, Apache, openssl */
 function l7prot(){
 	$CFAK = "scrubbed"; // Cloudflare API Key
@@ -65,6 +65,7 @@ function l7prot(){
 	}
 	function rwf1(){
 		$r = bin2hex(openssl_random_pseudo_bytes(128));
+		file_put_contents("/tmp/_wf_ACK.id",$_SERVER['REMOTE_ADDR'].$r."\n",FILE_APPEND);
 		echo $r;
 	}
 	function cleanExit(){
@@ -81,7 +82,8 @@ function l7prot(){
 	if(!empty($_GET['_wf_ACK'])){
 		// Check server ID cache (stored in /tmp/_wf.id)
 		if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR']."&".$_COOKIE['wf_ini']), explode("\n",file_get_contents("/tmp/_wf.id")))){
-			
+			if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR'].$_GET['_wf_ACK']),explode("\n",file_get_contents("/tmp/_wf_ACK.id")))){
+			//Wf ACK code here
 		}
 	}
 	eod:
