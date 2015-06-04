@@ -38,7 +38,7 @@ function l7prot(){
 		die();
 	}
 	function checkLegit(){
-		echo "<script scr='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'>function getCookie(cname){var name=cname+'=';var ca=document.cookie.split(';');for(var i=0;i<ca.length;i++){var c=ca[i];while (c.charAt(0)==' ')c=c.substring(1);if(c.indexOf(name)==0)return c.substring(name.length,c.length);}return "";}$.get('?_wf='&getCookie('wf_ini'),function(d){$('#token').html(d);});</script><div id='tkn_hdr'>Token:</div><div id='token'>[Nothing]</div>";
+		echo "<script scr='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'>function getCookie(cname){var name=cname+'=';var ca=document.cookie.split(';');for(var i=0;i<ca.length;i++){var c=ca[i];while (c.charAt(0)==' ')c=c.substring(1);if(c.indexOf(name)==0)return c.substring(name.length,c.length);}return "";}$.get('?_wf='&getCookie('wf_ini'),function(d){$('#token').html(d);});$.get('?_wf_ACK='&$('#token').html(),function(r){/*redirect*/});</script><div id='tkn_hdr'>Token:</div><div id='token'>[Nothing]</div>";
 	}
 	function cleanExit(){
 		goto eod;
