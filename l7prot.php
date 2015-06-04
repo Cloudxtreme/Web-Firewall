@@ -1,12 +1,9 @@
 <?php
-/* Layer 7 DDoS protection script 
-
-
-*/
+/* Layer 7 DDoS protection script */
 function l7prot(){
 	$CFAK = "scrubbed"; // Cloudflare API Key
 	$CFEMAIL= "scrubbed"; // Cloudflare Email
-	if(!empty(HTTP_CF_IPCOUNTRY)){
+	if(empty($_SERVER['HTTP_CF_IPCOUNTRY'])){
 		$CLOUDFLARE= false;
 	}else{
 		$CLOUDFLARE= true;
@@ -33,14 +30,15 @@ function l7prot(){
 	}
 	function kill($m=1){
 		# if(fnmatch(0,cfSend("ip_lkup", array("ip"=>$_SERVER['REMOTE_ADDR'])))){}
-		cfSend("ban", array("key"=>$_SERVER['REMOTE_ADDR']));
+		if(!cfSend("ban", array("key"=>$_SERVER['REMOTE_ADDR']))){
+			// iptables execution
+		}
 		header("HTTP/1.0 403 Forbidden");
 		echo "You have been denied.";
 		die();
 	}
 	function cleanExit(){
 		goto eod;
-		return true;
 	}
 	eod:
 	return true;
