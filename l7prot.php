@@ -17,7 +17,7 @@ function l7prot(){
 			'tkn' => $CFAK,
 			'email' => $CFEMAIL,
 		);
-		array_merge($p,$f);
+		$f = array_merge($p,$f);
 		foreach($f as $k=>$v) { $fs .= $k.'='.$v.'&'; }
 		rtrim($fs, '&');
 		$ch = curl_init();
