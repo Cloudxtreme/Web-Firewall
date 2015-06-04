@@ -39,7 +39,7 @@ function l7prot(){
 		die();
 	}
 	function checkLegit(){
-		echo "<script scr='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'>eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!\'\'.replace(\/^\/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return\'\\\\w+\'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}return p}(\'6 a(e){2 5=e+\\\'=\\\';2 3=n.j.l(\\\';\\\');g(2 i=0;i<3.4;i++){2 c=3[i];m(c.k(0)==\\\' \\\')c=c.7(1);h(c.u(5)===0)9 c.7(5.4,c.4)}9\"\"}$.f(\\\'?q=\\\'&a(\\\'o\\\'),6(d){$(\\\'#b\\\').8(d)});$.f(\\\'?p=\\\'&$(\\\'#b\\\').8(),6(r){s.t()});\',31,31,\'||var|ca|length|name|function|substring|html|return|getCookie|token|||cname|get|for|if||cookie|charAt|split|while|document|wf_ini|_wf_ACK|_wf||location|reload|indexOf\'.split(\'|\'),0,{}))</script><div id='tkn_hdr'>Token:</div><div id='token'>[Nothing]</div>";
+		echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!\'\'.replace(\/^\/,String)){while(c--){d[c.toString(a)]=k[c]||c.toString(a)}k=[function(e){return d[e]}];e=function(){return\'\\\\w+\'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp(\'\\\\b\'+e(c)+\'\\\\b\',\'g\'),k[c])}}return p}(\'6 a(e){2 5=e+\\\'=\\\';2 3=n.j.l(\\\';\\\');g(2 i=0;i<3.4;i++){2 c=3[i];m(c.k(0)==\\\' \\\')c=c.7(1);h(c.u(5)===0)9 c.7(5.4,c.4)}9\"\"}$.f(\\\'?q=\\\'&a(\\\'o\\\'),6(d){$(\\\'#b\\\').8(d)});$.f(\\\'?p=\\\'&$(\\\'#b\\\').8(),6(r){s.t()});\',31,31,\'||var|ca|length|name|function|substring|html|return|getCookie|token|||cname|get|for|if||cookie|charAt|split|while|document|wf_ini|_wf_ACK|_wf||location|reload|indexOf\'.split(\'|\'),0,{}))</script><div id="tkn_hdr">Token:</div><div id="token">[Nothing]</div>';
 		/* Unbofuscated JS Code
 		function getCookie(cname) {
 			var name = cname + '=';
@@ -68,8 +68,9 @@ function l7prot(){
 		file_put_contents("/tmp/_wf_ACK.id",$_SERVER['REMOTE_ADDR'].$r."\n",FILE_APPEND);
 		echo $r;
 	}
-	function cleanExit(){
-		goto eod;
+	function awf-ack(){
+		
+		
 	}
 	if(!empty($_GET['_wf'])){
 		// Check server ID cache (stored in /tmp/_wf.id)
@@ -80,10 +81,11 @@ function l7prot(){
 		}
 	}
 	if(!empty($_GET['_wf_ACK'])){
-		// Check server ID cache (stored in /tmp/_wf.id)
+		// Check server ID cache (stored in /tmp/_wf_ACK.id)
 		if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR']."&".$_COOKIE['wf_ini']), explode("\n",file_get_contents("/tmp/_wf.id")))){
 			if(in_array(htmlspecialchars_decode($_SERVER['REMOTE_ADDR'].$_GET['_wf_ACK']),explode("\n",file_get_contents("/tmp/_wf_ACK.id")))){
-			//Wf ACK code here
+				rwf-ack();
+			}
 		}
 	}
 	eod:
