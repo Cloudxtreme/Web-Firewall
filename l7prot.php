@@ -37,6 +37,9 @@ function l7prot(){
 		echo "You have been denied.";
 		die();
 	}
+	function checkLegit(){
+		echo "<script scr='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script>function getCookie(cname) {var name = cname + \"=\";var ca = document.cookie.split(';');for(var i=0; i<ca.length; i++) {var c = ca[i];while (c.charAt(0)==' ') c = c.substring(1);if (c.indexOf(name) == 0) return c.substring(name.length,c.length);}return "";}$.get('?_wf='&getCookie('wf_ini'),function(d){alert('d='&d);});</script>";
+	}
 	function cleanExit(){
 		goto eod;
 	}
