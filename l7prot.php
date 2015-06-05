@@ -82,7 +82,7 @@
 	function setwfCookie(){
 		$CID = substr(bin2hex(openssl_random_pseudo_bytes(192)), 1, 32);
 		setcookie("wf_twl",$CID,$time+$TTL);
-		file_put_contents("/tmp/_wf.wl",$_SERVER['REMOTE_ADDR'].":".$CID.":"time();
+		file_put_contents("/tmp/_wf.wl",$_SERVER['REMOTE_ADDR'].":".$CID.":".time());
 	}
-	echo var_dump(verCookie());
 	setwfCookie();
+	echo var_dump(verCookie());
